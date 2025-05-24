@@ -7,7 +7,7 @@ locals {
   }
 
   defaults = {
-    region = "Japan West"
+    region = var.default-region
   }
 }
 
@@ -26,7 +26,7 @@ resource "azurerm_network_security_group" "sigma-nsg" {
     content {
       name = local.user-allowed-nsg-rule-settings["name"]
       protocol = local.user-allowed-nsg-rule-settings["protocol"]
-      priority                   = 100
+      priority                   = 200
       direction                  = local.user-allowed-nsg-rule-settings["direction"]
       access                     = "Allow"
       source_port_range          = element(local.user-allowed-nsg-rule-settings["port-ip-settings"], 1)
@@ -35,4 +35,13 @@ resource "azurerm_network_security_group" "sigma-nsg" {
       destination_address_prefix = "*"
     }
   }
+}
+
+resource "azurerm_key_vault" "sigma-test-kvs" {
+  count = length(var.user-input-kv-list)
+  name = var.user-input-kv-list[count.index]
+  sku_name = var.user-input-kv-list[count.index]
+  tenant_id = var.kv-tenant-id
+  location = local.defaults.region
+  resource_group_name = azurerm_resource_group.sigma-rg.name
 }
