@@ -30,7 +30,7 @@ resource "azurerm_network_security_group" "sigma-nsg" {
       direction                  = local.user-allowed-nsg-rule-settings["direction"]
       access                     = "Allow"
       source_port_range          = element(local.user-allowed-nsg-rule-settings["port-ip-settings"], 1)
-      destination_port_range     = "*"
+      destination_port_range     = element(local.user-allowed-nsg-rule-settings["port-ip-settings"], 1)
       source_address_prefix      = element(local.user-allowed-nsg-rule-settings["port-ip-settings"], 0)
       destination_address_prefix = "*"
     }
