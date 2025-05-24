@@ -1,0 +1,6 @@
+environments/
+credentials.*
+
+*.tfstate
+*.terraform*
+*.out
