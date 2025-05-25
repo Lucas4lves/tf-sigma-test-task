@@ -1,6 +1,5 @@
 variable "default-region" {
   type    = string
-  default = "Japan West"
 }
 
 variable "rg-name" {
@@ -42,13 +41,16 @@ variable "user-input-kv-list" {
   type = list(object({
     name = string
     sku  = string
+    purge_protection = bool
   }))
   default = [{
     name = "sigma-test-kv1"
     sku  = "standard"
+    purge_protection = false
     }, {
     name = "sigma-test-kv2"
     sku  = "standard"
+    purge_protection = false
   }]
 }
 
