@@ -1,5 +1,5 @@
 variable "default-region" {
-  type = string
+  type    = string
   default = "Japan West"
 }
 
@@ -41,23 +41,25 @@ variable "nsg-sr-port-ip-settings" {
 variable "user-input-kv-list" {
   type = list(object({
     name = string
-    sku = string
-    enable_soft_deletion = boolean
-    enable_purge_protection = boolean
+    sku  = string
   }))
-  default = [ {
+  default = [{
     name = "sigma-test-kv1"
-    sku = "standard"
-    enable_soft_deletion = true
-    enable_purge_protection = false
-  },{
+    sku  = "standard"
+    }, {
     name = "sigma-test-kv2"
-    sku = "standard"
-    enable_soft_deletion = false
-    enable_purge_protection = false
+    sku  = "standard"
   }]
 }
 
 variable "kv-tenant-id" {
   type = string
+}
+
+variable "subscription-id" {
+  type = string
+}
+
+variable "install-sigma-module" {
+  type = bool
 }

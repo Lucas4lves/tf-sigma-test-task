@@ -11,6 +11,8 @@ locals {
   }
 }
 
+data "azurerm_client_config" "current" {}
+
 resource "azurerm_resource_group" "sigma-rg" {
   name = var.rg-name
   location = local.defaults.region
@@ -39,9 +41,10 @@ resource "azurerm_network_security_group" "sigma-nsg" {
 
 resource "azurerm_key_vault" "sigma-test-kvs" {
   count = length(var.user-input-kv-list)
-  name = var.user-input-kv-list[count.index]
-  sku_name = var.user-input-kv-list[count.index]
-  tenant_id = var.kv-tenant-id
+  name = var.user-input-kv-list[count.index].name
+  sku_name = var.user-input-kv-list[count.index].sku
+  purge_protection_enabled = false
+  tenant_id = data.azurerm_client_config.current.tenant_id
   location = local.defaults.region
   resource_group_name = azurerm_resource_group.sigma-rg.name
 }
