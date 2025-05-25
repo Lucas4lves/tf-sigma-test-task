@@ -43,7 +43,7 @@ resource "azurerm_key_vault" "sigma-test-kvs" {
   count = length(var.user-input-kv-list)
   name = var.user-input-kv-list[count.index].name
   sku_name = var.user-input-kv-list[count.index].sku
-  purge_protection_enabled = false
+  purge_protection_enabled = var.user-input-kv-list[count.index].purge_protection
   tenant_id = data.azurerm_client_config.current.tenant_id
   location = local.defaults.region
   resource_group_name = azurerm_resource_group.sigma-rg.name

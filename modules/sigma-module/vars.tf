@@ -32,14 +32,17 @@ variable "nsg-sr-port-ip-settings" {
 variable "user-input-kv-list" {
   type = list(object({
     name = string
-    sku = string
+    sku  = string
+    purge_protection = bool
   }))
-  default = [ {
+  default = [{
     name = "sigma-test-kv1"
-    sku = "standard"
-  },{
+    sku  = "standard"
+    purge_protection = false
+    }, {
     name = "sigma-test-kv2"
-    sku = "standard"
+    sku  = "standard"
+    purge_protection = false
   }]
 }
 

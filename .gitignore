@@ -6,3 +6,4 @@ run.*
 *.terraform*
 *terraform.*
 *.out
+*.diff
