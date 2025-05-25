@@ -33,7 +33,7 @@ variable "nsg-sr-protocol" {
 }
 
 variable "nsg-sr-port-ip-settings" {
-  description = "e.g()"
+  description = "e.g: 93.105.70.150:443"
   type        = string
 }
 
@@ -52,10 +52,6 @@ variable "user-input-kv-list" {
     sku  = "standard"
     purge_protection = false
   }]
-}
-
-variable "kv-tenant-id" {
-  type = string
 }
 
 variable "subscription-id" {

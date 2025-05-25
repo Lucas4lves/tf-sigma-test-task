@@ -45,7 +45,3 @@ variable "user-input-kv-list" {
     purge_protection = false
   }]
 }
-
-variable "kv-tenant-id" {
-  type = string
-}
