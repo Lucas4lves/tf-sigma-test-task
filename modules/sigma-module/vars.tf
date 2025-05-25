@@ -1,6 +1,6 @@
 variable "default-region" {
   type = string
-  default = "Japan West"
+  default = "westus2"
 }
 
 variable "rg-name" {
@@ -33,25 +33,23 @@ variable "user-input-kv-list" {
   type = list(object({
     name = string
     sku = string
-    enable_soft_deletion = boolean
-    enable_purge_protection = boolean
   }))
   default = [ {
     name = "sigma-test-kv1"
-    sku = "Standard"
-    enable_soft_deletion = true
-    enable_purge_protection = false
+    sku = "standard"
   },{
     name = "sigma-test-kv2"
-    sku = "Basic"
-    enable_soft_deletion = false
-    enable_purge_protection = false
+    sku = "standard"
   }]
 }
 
 variable "kv-tenant-id" {
   type = string
 }
+
+# variable "install-sigma-module" {
+#   type = bool
+# }
 
 /*
     name                       = "test123"
