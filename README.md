@@ -1,7 +1,7 @@
 # Junior Devops Engineer @Sigma Software - Test Task on Terraform
 
 ## Using variables
-* Make sure to have a local variables file (e.g: env.tfvars) with the following keys/values: 
+* Make sure to have a local variables file (e.g: env.tfvars) with the following key/value pair: 
 ```
 subscription-id           | string -> required by azurerm provider version 4.30
 ```
