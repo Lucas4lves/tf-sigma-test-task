@@ -1,17 +1,21 @@
 variable "default-region" {
   type    = string
+  default = "westus2"
 }
 
 variable "rg-name" {
   type = string
+  default = "sample-rg"
 }
 
 variable "nsg-name" {
   type = string
+  default = "sample-nsg"
 }
 
 variable "nsg-sr-name" {
   type = string
+  default = "sample-nsg-sr"
 }
 
 variable "nsg-sr-direction" {
@@ -33,7 +37,7 @@ variable "nsg-sr-protocol" {
 }
 
 variable "nsg-sr-port-ip-settings" {
-  description = "e.g: 93.105.70.150:443"
+  description = "e.g: 93.105.70.150/32:443"
   type        = string
 }
 
@@ -56,6 +60,7 @@ variable "user-input-kv-list" {
 
 variable "subscription-id" {
   type = string
+  default = ""
 }
 
 variable "install-sigma-module" {
