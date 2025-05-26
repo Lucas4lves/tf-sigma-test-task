@@ -1,4 +1,4 @@
-# Junior Devops Engineer @Sigma Software - Test Task on Terraform
+# Devops Engineer @Sigma Software - Test Task on Terraform
 
 ## Using variables
 * Make sure to have a local variables file (e.g: env.tfvars) with the following key/value pair: 
