@@ -7,6 +7,16 @@ variable "rg-name" {
   type = string
 }
 
+variable "vnet-name" {
+  type = string
+  default = "sigma-test-vnet"
+}
+
+variable "vnet-address-space" {
+  type = string
+  description = "Comma separared list of IP ranges for vnet resource address space: e.g: 10.0.0.0/16,10.12.124.0/32"
+}
+
 variable "nsg-name" {
   type = string
 }
@@ -43,5 +53,10 @@ variable "user-input-kv-list" {
     name = "sigma-test-kv2"
     sku  = "standard"
     purge_protection = false
+  },
+  {
+    name = "sigma-test-kv3"
+    sku  = "premium"
+    purge_protection = true
   }]
 }

@@ -1,9 +1,16 @@
 # Junior Devops Engineer @Sigma Software - Test Task on Terraform
 
+## Authenticating
+
+* Terraform user must be logged into Azure CLI with sufficient permissions to create Network Security Groups and Key Vaults:
+```
+az login
+```
+
 ## Using variables
 * Make sure to have a local variables file (e.g: env.tfvars) with the following key/value pair: 
 ```
-subscription-id           | string -> required by azurerm provider version 4.30
+subscription-id         | string -> required by azurerm provider version 4.30
 ```
 <span style="color:yellow;">WARNING!</span> subscription-id is sensitive data. 
 
