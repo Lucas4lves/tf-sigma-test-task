@@ -5,7 +5,8 @@ locals {
     direction = var.nsg-sr-direction
     port-ip-settings = split(":", var.nsg-sr-port-ip-settings)
   }
-
+  
+  parsed-vnet-address-space = split(",", var.vnet-address-space)
   defaults = {
     region = var.default-region
   }
@@ -16,6 +17,13 @@ data "azurerm_client_config" "current" {}
 resource "azurerm_resource_group" "sigma-rg" {
   name = var.rg-name
   location = local.defaults.region
+}
+
+resource "azurerm_virtual_network" "sigma-vnet" {
+  name                = var.vnet-name
+  location            = azurerm_resource_group.sigma-rg.location
+  resource_group_name = azurerm_resource_group.sigma-rg.name
+  address_space       = local.parsed-vnet-address-space
 }
 
 resource "azurerm_network_security_group" "sigma-nsg" {
